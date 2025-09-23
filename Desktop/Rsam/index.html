@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redirx - One Link for All Your Promotions</title>
+    <link rel="icon" href="../public/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: 'hsl(var(--border))',
+              input: 'hsl(var(--input))',
+              ring: 'hsl(var(--ring))',
+              background: 'hsl(var(--background))',
+              foreground: 'hsl(var(--foreground))',
+              primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))', light: 'hsl(var(--primary-light))', dark: 'hsl(var(--primary-dark))' },
+              secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+              muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+              accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+              popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+              card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+            },
+            container: { center: true, padding: '2rem', screens: { '2xl': '1400px' } },
+            borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 2px)', sm: 'calc(var(--radius) - 4px)' }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root{--background:0 0% 100%;--foreground:220 15% 12%;--card:0 0% 100%;--card-foreground:220 15% 12%;--popover:0 0% 100%;--popover-foreground:220 15% 12%;--primary:217 91% 60%;--primary-foreground:0 0% 98%;--primary-light:213 93% 68%;--primary-dark:221 83% 53%;--secondary:220 14% 96%;--secondary-foreground:220 15% 25%;--muted:220 14% 96%;--muted-foreground:220 9% 46%;--accent:217 91% 60%;--accent-foreground:0 0% 98%;--destructive:0 84% 60%;--destructive-foreground:0 0% 98%;--border:220 13% 91%;--input:220 13% 91%;--ring:217 91% 60%;--gradient-primary:linear-gradient(135deg,hsl(217 91% 60%),hsl(213 93% 68%));--gradient-hero:linear-gradient(135deg,hsl(217 91% 60% / .95),hsl(213 93% 68% / .95));--gradient-feature:linear-gradient(135deg,hsl(217 91% 60% / .05),hsl(213 93% 68% / .05));--gradient-glow:radial-gradient(ellipse at center,hsl(217 91% 60% / .15),transparent 70%);--shadow-elegant:0 10px 30px -10px hsl(217 91% 60% / .3);--shadow-card:0 4px 20px -4px hsl(220 15% 12% / .08);--shadow-feature:0 8px 32px -8px hsl(217 91% 60% / .12);--shadow-glow:0 0 40px hsl(217 91% 60% / .4);--transition-smooth:all .3s cubic-bezier(.4,0,.2,1);--transition-bounce:all .4s cubic-bezier(.68,-.55,.265,1.55);--transition-spring:all .5s cubic-bezier(.175,.885,.32,1.275);--radius:.75rem}
+      .hero-gradient{background:var(--gradient-hero)}
+      .feature-gradient{background:var(--gradient-feature)}
+      .animate-float{animation:float 6s ease-in-out infinite}
+      .animate-fade-up{animation:fadeUp .8s ease-out forwards;opacity:0;transform:translateY(20px)}
+      .animate-scale-in{animation:scaleIn .6s ease-out forwards;opacity:0;transform:scale(.95)}
+      .hover-lift{transition:var(--transition-smooth)}.hover-lift:hover{transform:translateY(-4px);box-shadow:var(--shadow-elegant)}
+      .gradient-text{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+      @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+      @keyframes scaleIn{to{opacity:1;transform:scale(1)}}
+    </style>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav id="nav" class="nav">
+      <div class="container nav-inner">
+        <a href="#" class="nav-logo">Redirx</a>
+        <button id="menuButton" class="menu-button" aria-label="Toggle menu">☰</button>
+        <div id="navLinks" class="nav-links">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#pricing" class="nav-link">Pricing</a>
+          <a href="#about" class="nav-link">About</a>
+          <div class="nav-cta">
+            <a href="#" class="btn primary-gradient hover-lift">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.3),transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.2),transparent_50%)]"></div>
+      <div class="relative z-10 container mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+          <div class="animate-fade-up">
+            <div class="inline-block px-4 py-2 bg-purple-500/20 backdrop-blur-sm border border-purple-400/30 rounded-full text-purple-300 text-sm font-medium mb-8">
+              YOUR ONE LINK FOR EVERYTHING
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+              Your One Link for <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Everything</span>
+            </h1>
+            <p class="text-lg md:text-xl text-white/80 mb-12 leading-relaxed max-w-2xl">
+              Unify your digital presence. Redirx gives you a single, powerful link with keyword search to direct your audience exactly where you want them to go. Effortless, professional, and built for conversion.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mb-16">
+              <a href="#pricing" class="btn bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-lg px-8 py-4 h-auto rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
+                Start Free Trial
+              </a>
+              <a href="#demo" class="btn border-2 border-white/30 text-white text-lg px-8 py-4 h-auto rounded-full font-semibold hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+                <i data-lucide="play" class="h-5 w-5"></i>
+                Watch Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Mobile Layout with Social Media Links, Apps, and Analytics -->
+          <div class="animate-scale-in">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <h3 class="text-2xl font-bold text-white mb-6">Your Digital Hub</h3>
+
+              <!-- Social Media Links -->
+              <div class="mb-8">
+                <h4 class="text-white/90 font-semibold mb-4">Social Media Links</h4>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="instagram" class="h-4 w-4 text-white"></i>
+                      </div>
+                      <div>
+                        <div class="text-white text-sm font-medium">Instagram</div>
+                        <div class="text-white/60 text-xs">@yourusername</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <i data-lucide="twitter" class="h-4 w-4 text-white"></i>
+                      </div>
+                      <div>
+                        <div class="text-white text-sm font-medium">Twitter</div>
+                        <div class="text-white/60 text-xs">@yourhandle</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="youtube" class="h-4 w-4 text-white"></i>
+                      </div>
+                      <div>
+                        <div class="text-white text-sm font-medium">YouTube</div>
+                        <div class="text-white/60 text-xs">Your Channel</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full flex items-center justify-center">
+                        <i data-lucide="link" class="h-4 w-4 text-white"></i>
+                      </div>
+                      <div>
+                        <div class="text-white text-sm font-medium">TikTok</div>
+                        <div class="text-white/60 text-xs">@youraccount</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Apps & Links -->
+              <div class="mb-8">
+                <h4 class="text-white/90 font-semibold mb-4">Apps & Links</h4>
+                <div class="space-y-3">
+                  <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                          <i data-lucide="smartphone" class="h-5 w-5 text-white"></i>
+                        </div>
+                        <div>
+                          <div class="text-white font-medium">Mobile App</div>
+                          <div class="text-white/60 text-sm">Download for iOS & Android</div>
+                        </div>
+                      </div>
+                      <div class="text-white/60 text-sm">↗</div>
+                    </div>
+                  </div>
+                  <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                          <i data-lucide="globe" class="h-5 w-5 text-white"></i>
+                        </div>
+                        <div>
+                          <div class="text-white font-medium">Website</div>
+                          <div class="text-white/60 text-sm">yourwebsite.com</div>
+                        </div>
+                      </div>
+                      <div class="text-white/60 text-sm">↗</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Analytics -->
+              <div>
+                <h4 class="text-white/90 font-semibold mb-4">Analytics</h4>
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-white">12.4K</div>
+                    <div class="text-white/60 text-sm">Clicks</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-white">8.2K</div>
+                    <div class="text-white/60 text-sm">Visitors</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-white">24%</div>
+                    <div class="text-white/60 text-sm">Conversion</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="mb-32">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="order-2 lg:order-1 animate-scale-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="hover-lift border rounded-xl">
+                    <div class="p-6 text-center">
+                      <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="target" class="h-8 w-8 text-primary"></i>
+                      </div>
+                      <h4 class="font-semibold mb-2">Influencer Says</h4>
+                      <p class="text-sm text-muted-foreground">"Search for 'summerdress' to find this outfit!"</p>
+                    </div>
+                  </div>
+                  <div class="hover-lift border rounded-xl">
+                    <div class="p-6 text-center">
+                      <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="arrow-right" class="h-8 w-8 text-green-600"></i>
+                      </div>
+                      <h4 class="font-semibold mb-2">Fan Searches</h4>
+                      <div class="bg-muted/50 rounded-lg p-3">
+                        <div class="text-xs text-muted-foreground mb-1">Search:</div>
+                        <div class="font-medium">summerdress</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 lg:order-2 animate-fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Simple Keywords That Convert</h2>
+                <p class="text-xl text-muted-foreground mb-8 leading-relaxed">Assign memorable keywords to each link. Your audience enters the keyword to find exactly what they're looking for.</p>
+                <div class="bg-gradient-to-r from-primary/5 to-primary-light/5 rounded-2xl p-6 border border-primary/10">
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3"><span class="text-sm font-medium text-muted-foreground">Before:</span><span class="text-sm">"Check my bio for the link!"</span></div>
+                    <div class="flex items-center gap-3"><span class="text-sm font-medium text-primary">After:</span><span class="text-sm font-medium">"Search 'summerdress' on my Redirx!"</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-32">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="animate-fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Track Your Promotion Performance</h2>
+                <p class="text-xl text-muted-foreground mb-8 leading-relaxed">Monitor which products get engagement. Understand your audience with detailed analytics and conversion data.</p>
+              </div>
+              <div class="animate-scale-in">
+                <div class="hover-lift border rounded-xl">
+                  <div class="p-8">
+                    <h3 class="text-xl font-semibold mb-6">Analytics Dashboard</h3>
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="text-center p-4 bg-muted/30 rounded-lg"><i data-lucide="trending-up" class="h-6 w-6 text-primary mx-auto mb-2"></i><div class="text-xs text-muted-foreground">Total Clicks</div><div class="font-bold text-lg">12.4K</div><div class="text-xs text-green-600">+24%</div></div>
+                    <div class="text-center p-4 bg-muted/30 rounded-lg"><i data-lucide="users" class="h-6 w-6 text-primary mx-auto mb-2"></i><div class="text-xs text-muted-foreground">Unique Visitors</div><div class="font-bold text-lg">8.2K</div><div class="text-xs text-green-600">+18%</div></div>
+                    <div class="text-center p-4 bg-muted/30 rounded-lg"><i data-lucide="calendar" class="h-6 w-6 text-primary mx-auto mb-2"></i><div class="text-xs text-muted-foreground">This Month</div><div class="font-bold text-lg">2.1K</div><div class="text-xs text-green-600">+32%</div></div>
+                    </div>
+                    <div class="space-y-3">
+                      <h4 class="font-medium">Top Performing Keywords</h4>
+                      <div class="flex items-center justify-between"><span class="font-medium text-primary">summerdress</span><div class="text-right"><div class="text-sm font-medium">1240</div><div class="text-xs text-muted-foreground">12.4%</div></div></div>
+                      <div class="flex items-center justify-between"><span class="font-medium text-primary">skincare</span><div class="text-right"><div class="text-sm font-medium">980</div><div class="text-xs text-muted-foreground">9.8%</div></div></div>
+                      <div class="flex items-center justify-between"><span class="font-medium text-primary">protein</span><div class="text-right"><div class="text-sm font-medium">760</div><div class="text-xs text-muted-foreground">7.6%</div></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+              <div class="order-2 lg:order-1 animate-scale-in">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div class="hover-lift border-2 border-orange-200 rounded-xl p-4">
+                    <div class="w-full h-20 bg-orange-500 rounded-lg mb-3 relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div></div>
+                    <h4 class="font-semibold text-sm">Fitness Style</h4>
+                    <p class="text-xs text-muted-foreground">Custom fitness layout</p>
+                  </div>
+                  <div class="hover-lift border-2 border-pink-200 rounded-xl p-4">
+                    <div class="w-full h-20 bg-pink-500 rounded-lg mb-3 relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div></div>
+                    <h4 class="font-semibold text-sm">Beauty Style</h4>
+                    <p class="text-xs text-muted-foreground">Custom beauty layout</p>
+                  </div>
+                  <div class="hover-lift border-2 border-blue-200 rounded-xl p-4">
+                    <div class="w-full h-20 bg-blue-500 rounded-lg mb-3 relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div></div>
+                    <h4 class="font-semibold text-sm">Tech Style</h4>
+                    <p class="text-xs text-muted-foreground">Custom tech layout</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-1 lg:order-2 animate-fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Your Brand, Your Page</h2>
+                <p class="text-xl text-muted-foreground mb-8 leading-relaxed">Match your Redirx page to your personal brand with custom colors, fonts, and layouts.</p>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-4"><div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><i data-lucide="palette" class="h-5 w-5 text-primary"></i></div><span class="text-lg">Custom color schemes and themes</span></div>
+                  <div class="flex items-center gap-4"><div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><i data-lucide="target" class="h-5 w-5 text-primary"></i></div><span class="text-lg">Brand-aligned layouts and fonts</span></div>
+                  <div class="flex items-center gap-4"><div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><i data-lucide="bar-chart-3" class="h-5 w-5 text-primary"></i></div><span class="text-lg">Niche-specific templates</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section alt">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-lead">Get started with Redirx in four simple steps and transform how you share promotional content.</p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-icon"><i data-lucide="user-plus" class="h-8 w-8 text-primary"></i></div>
+              <h3>Create your Redirx account</h3>
+              <p class="muted">Sign up in seconds and get your personalized link page ready to customize.</p>
+              <div class="detail">Quick setup with social login options</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-icon"><i data-lucide="plus" class="h-8 w-8 text-primary"></i></div>
+              <h3>Add links with keywords</h3>
+              <p class="muted">Upload your promotional links and assign memorable keywords for easy discovery.</p>
+              <div class="detail">Organize by campaigns or categories</div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-icon"><i data-lucide="share-2" class="h-8 w-8 text-primary"></i></div>
+              <h3>Share your Redirx URL in bio</h3>
+              <p class="muted">Replace your bio link with your Redirx URL and let followers search for what they want.</p>
+              <div class="detail">One link replaces all others</div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-icon"><i data-lucide="bar-chart-3" class="h-8 w-8 text-primary"></i></div>
+              <h3>Track clicks and revenue</h3>
+              <p class="muted">Monitor performance with detailed analytics and optimize your promotional strategy.</p>
+              <div class="detail">Real-time insights and reports</div>
+            </div>
+          </div>
+
+          <div class="cta-center">
+            <div class="cta-card">
+              <h3>Ready to get started?</h3>
+              <p class="muted">Join thousands of influencers already using Redirx to boost their conversions.</p>
+              <a class="btn primary">Start Your Free Trial</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section id="pricing" class="py-20 bg-background">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Simple, Transparent Pricing</h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">Choose the plan that fits your needs. All plans include our core features with no hidden fees.</p>
+            <div class="flex items-center justify-center gap-4">
+              <span class="text-sm text-primary font-medium" id="labelMonthly">Monthly</span>
+              <button id="billingToggle" class="relative w-14 h-7 rounded-full bg-muted transition-colors duration-300"><div class="absolute top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 translate-x-1"></div></button>
+              <span class="text-sm text-muted-foreground" id="labelAnnual">Annual</span>
+              <span id="saveBadge" class="text-sm bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium hidden">Save 20%</span>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="relative animate-scale-in" style="animation-delay: 0s">
+              <div class="border rounded-xl hover-lift h-full shadow-[var(--shadow-card)]">
+                <div class="text-center p-8">
+                  <h3 class="text-2xl font-bold mb-2">FREE</h3>
+                  <div class="mb-4">
+                    <span class="text-4xl md:text-5xl font-bold"><span class="amount" data-month="0" data-year="0">$0</span></span>
+                    <span class="text-muted-foreground">/month</span>
+                  </div>
+                  <p class="text-muted-foreground">Perfect for getting started</p>
+                </div>
+                <div class="px-8 pt-0">
+                  <a class="btn outline wfull mb-8 hover-lift">Get Started</a>
+                  <div class="space-y-4 text-sm text-left">
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>5 active links</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Basic analytics</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Standard support</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Basic customization</span></div>
+                    <div class="flex items-start gap-3 mb-8"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Mobile optimized</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative animate-scale-in" style="animation-delay: .1s">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">Most Popular</div>
+              <div class="border rounded-xl hover-lift h-full border-primary shadow-[var(--shadow-feature)] scale-105">
+                <div class="text-center p-8">
+                  <h3 class="text-2xl font-bold mb-2">PRO</h3>
+                  <div class="mb-4">
+                    <span class="text-4xl md:text-5xl font-bold"><span class="amount" data-month="12.99" data-year="10.39">$12.99</span></span>
+                    <span class="text-muted-foreground">/month</span>
+                    <div class="text-sm text-muted-foreground line-through hidden" id="proStrike">$12.99/month</div>
+                  </div>
+                  <p class="text-muted-foreground">For serious influencers</p>
+                </div>
+                <div class="px-8 pt-0">
+                  <a class="btn primary wfull mb-8 hover-lift">Start Pro Trial</a>
+                  <div class="space-y-4 text-sm text-left">
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Unlimited links</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Full analytics dashboard</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Custom domain</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Advanced customization</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Priority support</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>A/B testing</span></div>
+                    <div class="flex items-start gap-3 mb-8"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Export data</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative animate-scale-in" style="animation-delay: .2s">
+              <div class="border rounded-xl hover-lift h-full shadow-[var(--shadow-card)]">
+                <div class="text-center p-8">
+                  <h3 class="text-2xl font-bold mb-2">BUSINESS</h3>
+                  <div class="mb-4">
+                    <span class="text-4xl md:text-5xl font-bold"><span class="amount" data-month="29.99" data-year="23.99">$29.99</span></span>
+                    <span class="text-muted-foreground">/month</span>
+                  </div>
+                  <p class="text-muted-foreground">For teams and agencies</p>
+                </div>
+                <div class="px-8 pt-0">
+                  <a class="btn outline wfull mb-8 hover-lift">Contact Sales</a>
+                  <div class="space-y-4 text-sm text-left">
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Everything in Pro</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Team access (5 users)</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>API access</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>White-label options</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Dedicated account manager</span></div>
+                    <div class="flex items-start gap-3"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Custom integrations</span></div>
+                    <div class="flex items-start gap-3 mb-8"><div class="flex-shrink-0 w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">✓</div><span>Advanced reporting</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-16 animate-fade-up">
+            <p class="text-muted-foreground mb-4">Questions about our pricing? Check out our <a href="#faq" class="text-primary hover:underline font-medium">frequently asked questions</a></p>
+            <div class="flex justify-center gap-4 text-sm text-muted-foreground">
+              <span>✓ No setup fees</span>
+              <span>✓ Cancel anytime</span>
+              <span>✓ 14-day free trial</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section alt">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h2 class="section-title">About Redirx</h2>
+            <p class="section-lead">Empowering influencers to monetize content more effectively</p>
+          </div>
+
+          <div class="card story">
+            <h3 class="center">Our Story</h3>
+            <div class="story-text">
+              <p>Founded in 2023, Redirx was born from a simple observation: influencers were losing potential revenue because their audiences couldn't easily find the products they promoted. The "link in bio" approach was outdated and frustrating for both creators and their followers.</p>
+              <p>We identified a critical problem in influencer marketing - the disconnect between content and conversion. When an influencer mentions a product in a video or post, their audience has to navigate through multiple steps to find the actual link, leading to drop-off and lost sales.</p>
+              <p>Redirx solves this with our innovative keyword-based linking system. Now when creators mention "search for 'summerdress' on my Redirx," their audience can instantly find exactly what they're looking for. It's that simple, and it works.</p>
+            </div>
+          </div>
+
+          <h3 class="center mt">Our Core Values</h3>
+          <div class="values">
+            <div class="value"><div class="mini-icon"><i data-lucide="zap" class="h-8 w-8 text-primary"></i></div><h4>Simplicity</h4><p class="muted">We believe powerful tools should be easy to use. No complexity, just results.</p></div>
+            <div class="value"><div class="mini-icon"><i data-lucide="trending-up" class="h-8 w-8 text-primary"></i></div><h4>Performance</h4><p class="muted">Every feature is designed to help you convert better and earn more from your content.</p></div>
+            <div class="value"><div class="mini-icon"><i data-lucide="users" class="h-8 w-8 text-primary"></i></div><h4>Creator-Focused</h4><p class="muted">Built by creators, for creators. We understand your challenges and goals.</p></div>
+            <div class="value"><div class="mini-icon"><i data-lucide="lightbulb" class="h-8 w-8 text-primary"></i></div><h4>Innovation</h4><p class="muted">Constantly evolving with new features to stay ahead of the social media landscape.</p></div>
+          </div>
+
+          <div class="stats-bar">
+            <div class="s"><div class="num">10K+</div><div class="muted small">Active Creators</div></div>
+            <div class="s"><div class="num">2M+</div><div class="muted small">Links Managed</div></div>
+            <div class="s"><div class="num">50M+</div><div class="muted small">Clicks Tracked</div></div>
+            <div class="s"><div class="num">25%</div><div class="muted small">Avg. Conversion Increase</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h2 class="section-title">Loved by Creators Worldwide</h2>
+            <p class="section-lead">See how top influencers are using Redirx to boost their conversions and streamline their promotional workflow.</p>
+          </div>
+
+          <div class="cards three">
+            <div class="tcard">
+              <div class="stars">★★★★★</div>
+              <blockquote>"Redirx completely transformed how I share product links. My audience loves how easy it is to find exactly what they're looking for!"</blockquote>
+              <div class="metric">43% increase in conversions</div>
+              <div class="author">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b776?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen">
+                <div>
+                  <div class="name">Sarah Chen</div>
+                  <div class="muted small">@sarahstyles • 245K followers</div>
+                </div>
+                <div class="chip">Fashion</div>
+              </div>
+            </div>
+            <div class="tcard">
+              <div class="stars">★★★★★</div>
+              <blockquote>"The keyword system is genius. When I mention 'protein' in my videos, my followers know exactly where to go. My supplement sales doubled!"</blockquote>
+              <div class="metric">67% more click-throughs</div>
+              <div class="author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Marcus Johnson">
+                <div>
+                  <div class="name">Marcus Johnson</div>
+                  <div class="muted small">@fitnesswithmarcus • 180K followers</div>
+                </div>
+                <div class="chip">Fitness</div>
+              </div>
+            </div>
+            <div class="tcard">
+              <div class="stars">★★★★★</div>
+              <blockquote>"As a tech reviewer, I share tons of product links. Redirx keeps everything organized and my analytics are incredible. Best investment I've made!"</blockquote>
+              <div class="metric">52% improvement in engagement</div>
+              <div class="author">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emma Rodriguez">
+                <div>
+                  <div class="name">Emma Rodriguez</div>
+                  <div class="muted small">@techwithem • 320K followers</div>
+                </div>
+                <div class="chip">Tech</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="proof">
+            <div>
+              <div class="num">4.9/5</div>
+              <div class="muted small">Creator Rating</div>
+            </div>
+            <div>
+              <div class="num">98%</div>
+              <div class="muted small">Would Recommend</div>
+            </div>
+            <div>
+              <div class="num">24/7</div>
+              <div class="muted small">Support Available</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section alt">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-lead">Everything you need to know about Redirx and how it can transform your link sharing strategy.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">How do keywords work?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">Keywords are unique, memorable words you assign to each of your links. When your audience types that keyword into your Redirx page, the right product instantly appears. For example: mention "summerdress" in a video—fans search it, and boom, they're shopping that exact look.</p></div></div></div></div>
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">Can I customize my page?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">Absolutely! Redirx offers extensive customization options including custom colors, fonts, layouts, and even your own domain. You can match your Redirx page perfectly to your personal brand and aesthetic.</p></div></div></div></div>
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">What analytics do you provide?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">We provide comprehensive analytics including click-through rates, unique visitors, conversion tracking, top-performing keywords, audience demographics, and revenue attribution. You'll have full visibility into which products and keywords drive the most engagement.</p></div></div></div></div>
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">How does Redirx compare to others?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">Unlike traditional 'link in bio' tools that require scrolling through lists, Redirx uses keyword search to instantly connect your audience with the exact product they want. This dramatically improves conversion rates and user experience.</p></div></div></div></div>
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">Can I try for free?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">Yes! We offer a generous free plan with 5 active links and basic analytics. You can also start a 14-day free trial of our Pro features to experience the full power of Redirx before committing.</p></div></div></div></div>
+            <div class="border rounded-xl hover-lift"><div class="p-0"><button class="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors duration-200 faq-q"><h3 class="text-lg font-semibold pr-4">How do I get started?</h3><div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><span class="plus text-primary">+</span></div></button><div class="px-6 pb-6 hidden faq-a"><div class="border-t border-border pt-4"><p class="text-muted-foreground leading-relaxed">Getting started is simple! Sign up for your free account, add your first promotional links with keywords, update your social media bio with your Redirx URL, and start tracking your improved conversions. The whole setup takes less than 10 minutes.</p></div></div></div></div>
+          </div>
+          <div class="cta-center mt">
+            <div class="cta-card outline">
+              <h3>Still have questions?</h3>
+              <p class="muted">Our support team is here to help! Reach out and we'll get back to you within 24 hours.</p>
+              <div class="row center gap">
+                <a href="mailto:support@redirx.com" class="link">support@redirx.com</a>
+                <a class="btn primary">Contact Support</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-foreground text-background py-20">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-3xl font-bold mb-4 gradient-text">Redirx</h3>
+              <p class="text-background/80 text-lg leading-relaxed">The smartest way for influencers to share and track product links. Transform how you monetize your content with keyword-powered link management.</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Stay Updated</h4>
+              <p class="text-background/80 mb-4">Get the latest updates, tips, and success stories from the Redirx community.</p>
+              <form class="flex gap-3" onsubmit="event.preventDefault()">
+                <input type="email" placeholder="Enter your email" class="bg-background/10 border border-background/20 text-background placeholder:text-background/60 rounded-md px-3 py-2 flex-1" required>
+                <button type="submit" class="btn primary px-6">Send</button>
+              </form>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Follow Us</h4>
+              <div class="flex gap-4">
+                <a href="#" aria-label="Instagram" class="w-10 h-10 bg-background/10 hover:bg-background/20 rounded-lg flex items-center justify-center transition-colors"><i data-lucide="instagram" class="h-5 w-5"></i></a>
+                <a href="#" aria-label="TikTok" class="w-10 h-10 bg-background/10 hover:bg-background/20 rounded-lg flex items-center justify-center transition-colors"><i data-lucide="message-circle" class="h-5 w-5"></i></a>
+                <a href="#" aria-label="Twitter" class="w-10 h-10 bg-background/10 hover:bg-background/20 rounded-lg flex items-center justify-center transition-colors"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">Support</h4>
+              <a href="mailto:support@redirx.com" class="flex items-center gap-2 text-background/80 hover:text-background transition-colors">support@redirx.com</a>
+            </div>
+          </div>
+          <div>
+            <div class="border border-background/20 rounded-xl p-8">
+              <h4 class="text-2xl font-semibold mb-6 text-background">Get in Touch</h4>
+              <form class="space-y-4" onsubmit="event.preventDefault()">
+                <input placeholder="Your name" class="bg-background/10 border border-background/20 text-background placeholder:text-background/60 rounded-md px-3 py-2 w-full" required>
+                <input type="email" placeholder="Your email" class="bg-background/10 border border-background/20 text-background placeholder:text-background/60 rounded-md px-3 py-2 w-full" required>
+                <textarea placeholder="Your message" class="bg-background/10 border border-background/20 text-background placeholder:text-background/60 rounded-md px-3 py-2 w-full min-h-[120px]" required></textarea>
+                <button class="btn primary wfull">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-background/20 mt-16 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-background/80 text-sm">© <span id="year"></span> Redirx. All rights reserved.</div>
+            <div class="flex gap-6 text-sm">
+              <a href="#" class="text-background/80 hover:text-background transition-colors">Privacy Policy</a>
+              <a href="#" class="text-background/80 hover:text-background transition-colors">Terms of Service</a>
+              <a href="#" class="text-background/80 hover:text-background transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
