@@ -1,0 +1,60 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Style entry point.
+
+   Loaded once from `client/src/main.tsx`. Every other CSS file in this
+   directory is composed here in import order — Tailwind first, then design
+   tokens, then component / layout overrides.
+
+   The monolithic `_app-global.css` holds the full v1 stylesheet that came
+   over from the old project. The TODO partials below mark where to extract
+   sections incrementally (search for the matching banner comment inside
+   _app-global.css to know what belongs where).
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* 1. Design tokens & resets (entire current stylesheet — incrementally split) */
+@import './_app-global.css';
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Lightweight route fade-in.
+
+   Layout used to wrap <Outlet> in framer-motion with key={pathname}, which
+   forced a full remount + 150ms JS fade per navigation. We swapped that for
+   this 120ms CSS animation — same look, none of the remount cost.
+   ───────────────────────────────────────────────────────────────────────── */
+@keyframes app-route-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.app-route-fade {
+  animation: app-route-fade-in 0.16s ease-out both;
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-route-fade { animation: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Editorial display face for page titles.
+
+   The brand mark "The Crumb" in the sidebar is set in Playfair Display.
+   Promoting every page title to the same face gives the dashboard the same
+   editorial tone — and is the single change that ties the pages together
+   visually.
+   ───────────────────────────────────────────────────────────────────────── */
+.app-page-main-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.015em;
+}
+
+/* 2. Future partials (uncomment after migration — see _app-global.css):
+@import './tokens.css';        // :root CSS variables, color system, spacing
+@import './base.css';          // global resets, typography, body styles
+@import './layout.css';        // app shell, sidebar, main grid
+@import './forms.css';         // inputs, dropdowns, checkbox, radio
+@import './buttons.css';       // .btn variants, accent buttons
+@import './cards.css';         // dashboard cards, link items, stats cards
+@import './modals.css';        // modal overlay + sheet, image cropper
+@import './animations.css';    // keyframes, hover/focus transitions
+@import './responsive.css';    // small/medium/large-mobile fine tuning
+@import './utilities.css';     // ad-hoc helpers
+*/
